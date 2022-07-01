@@ -11,6 +11,12 @@ A simple cat detector using neural networks and deep learning based on VGG using
 * [Install Tensorflow Serving using Docker](https://github.com/tensorflow/serving)
 
 ### Use
+Save the VGG model to disk:
+
+```bash
+python save_vgg_model.py
+```
+
 Start TensorFlow Serving container and open the REST API port using a WSL terminal:
 
 ```bash
