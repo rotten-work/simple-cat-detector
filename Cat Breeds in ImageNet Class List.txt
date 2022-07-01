@@ -1,0 +1,6 @@
+tabby
+tiger_cat
+Persian_cat
+Siamese_cat
+Egyptian_cat
+lynx # Not a cat, but very close to cats

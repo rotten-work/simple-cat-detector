@@ -1,0 +1,19 @@
+Bash Command:
+
+TESTDATA="/mnt/d/GitHub/tensorflow-serving/tensorflow_serving/servables/tensorflow/testdata"
+
+docker run -t --rm -p 8501:8501 -v "$TESTDATA/saved_model_half_plus_two_cpu:/models/half_plus_two" -e MODEL_NAME=half_plus_two tensorflow/serving &
+
+docker run -t -p 8501:8501 --mount type=bind,source=$TESTDATA,target=$TESTDATA -e MODEL_NAME=saved_model_half_plus_two_cpu -e MODEL_BASE_PATH=$TESTDATA tensorflow/serving &
+
+curl -d '{"instances": [1.0, 2.0, 5.0]}' -X POST http://localhost:8501/v1/models/saved_model_half_plus_two_cpu:predict
+
+curl -d '{"instances": [1.0, 2.0, 5.0]}' -X POST http://localhost:8501/v1/models/half_plus_two:predict
+
+/mnt/d/GitHub/simple-cat-detector
+
+docker run --name vgg_test -t -p 8501:8501 --mount type=bind,source=/mnt/d,target=/mnt/d -e MODEL_NAME=vgg_serving -e MODEL_BASE_PATH=/mnt/d/GitHub/simple-cat-detector tensorflow/serving &
+
+docker cp models/<my model> serving_base:/models/<my model>
+
+
